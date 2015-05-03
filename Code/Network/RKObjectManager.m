@@ -668,8 +668,9 @@ static NSString *RKMIMETypeFromAFHTTPClientParameterEncoding(AFHTTPClientParamet
     // Non-Core Data operation
     operation = [self objectRequestOperationWithRequest:request success:nil failure:nil];
 #endif
-    
-    if (RKDoesArrayOfResponseDescriptorsContainMappingForClass(self.responseDescriptors, [object class])) operation.targetObject = object;
+    // Don't expect to receive the same object in the receiver
+    /*if (RKDoesArrayOfResponseDescriptorsContainMappingForClass(self.responseDescriptors, [object class])) operation.targetObject = object;
+    */
     operation.mappingMetadata = routingMetadata;
     return operation;
 }
