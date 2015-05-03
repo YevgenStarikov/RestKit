@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage         =  'http://www.restkit.org'
   s.social_media_url =  'https://twitter.com/RestKit'
   s.author           =  { 'Blake Watters' => 'blakewatters@gmail.com' }
-  s.source           =  { :git => 'https://github.com/RestKit/RestKit.git', :tag => "v#{s.version}" }
+  s.source           =  { :git => 'https://github.com/razmara/RestKit.git', :tag => "v#{s.version}" }
   s.license          =  'Apache License, Version 2.0'
 
   # Platform setup
