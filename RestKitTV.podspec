@@ -38,7 +38,7 @@ EOS
   s.subspec 'ObjectMapping' do |os|
     os.source_files   = 'Code/ObjectMapping.h', 'Code/ObjectMapping'
     os.dependency       'RestKitTV/Support'
-    os.dependency       'RKValueTransformers', '~> 1.1.0'
+    os.dependency       'RestKitTV/RKValueTransformers'
     os.dependency       'ISO8601DateFormatterValueTransformer', '~> 0.6.0'
   end
 
@@ -108,6 +108,11 @@ EOS
 
   s.subspec 'TransitionKit' do |tk|
     tk.source_files   = 'Code/RestKit.h', 'Code/TransitionKit.h', 'Code/TransitionKit'
+    #ss.dependency 'RestKitTV/TransitionKit'
+  end
+
+  s.subspec 'RKValueTransformers' do |tk|
+    tk.source_files   = 'Code/RestKit.h', 'RestKitTV/Code/RKValueTransformers.h', 'RestKitTV/Code/RKValueTransformers'
     #ss.dependency 'RestKitTV/TransitionKit'
   end
 
