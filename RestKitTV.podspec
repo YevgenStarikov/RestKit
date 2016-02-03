@@ -103,7 +103,7 @@ EOS
   s.subspec 'Support' do |ss|
     ss.source_files   = 'Code/RestKit.h', 'Code/Support.h', 'Code/Support'
     ss.preserve_paths = 'Vendor/LibComponentLogging/Core' # Preserved because they are symlinked
-    ss.dependency 'TransitionKit', '~> 2.1.1'
+    ss.dependency 'RestKitTV/TransitionKit', '~> 2.1.1'
   end
 
   s.subspec 'CocoaLumberjack' do |cl|
