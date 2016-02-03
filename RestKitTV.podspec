@@ -1,18 +1,18 @@
 Pod::Spec.new do |s|
   s.name             =  'RestKitTV'
-  s.version          =  '0.26.0'
+  s.version          =  '0.24.1'
   s.summary          =  'RestKit is a framework for consuming and modeling RESTful web resources on iOS and OS X.'
   s.homepage         =  'https://github.com/RestKit/RestKit'
   s.social_media_url =  'https://twitter.com/RestKit'
   s.author           =  { 'Blake Watters' => 'blakewatters@gmail.com' }
-  s.source           =  { :git => 'https://github.com/razmara/RestKit.git', :tag => "v#{s.version}" }
+  s.source           =  { :git => 'https://github.com/razmara/RestKit.git', :tag => "v#{s.version}, :branch => tvos" }
   s.license          =  'Apache License, Version 2.0'
 
   # Platform setup
   s.requires_arc = true
   s.ios.deployment_target = '5.1.1'
   s.osx.deployment_target = '10.7'
-  s.tvos.deployment_target = '9.0'
+  s.tvos.deployment_target = '9.1'
 
   # Exclude optional Search and Testing modules
   s.default_subspec = 'Core'
@@ -45,6 +45,7 @@ EOS
   s.subspec 'Network' do |ns|
     ns.source_files   = 'Code/Network.h', 'Code/Network'
     ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
+    ns.tvos.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
     ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
     ns.dependency       'SOCKit'
     ns.dependency       'AFNetworking', '~> 1.3.0'
