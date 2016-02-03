@@ -23,7 +23,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <RestKit/Support/lcl_RK.h>
+#import <RestKitTV/Support/lcl_RK.h>
 #include <string.h>
 
 
