@@ -1,6 +1,10 @@
 # RestKit
 
-The original one you can find here https://github.com/RestKit/RestKit 
+[![Build Status](http://img.shields.io/travis/RestKit/RestKit/development.svg?style=flat)](https://travis-ci.org/RestKit/RestKit)
+[![Pod Version](http://img.shields.io/cocoapods/v/RestKit.svg?style=flat)](http://cocoadocs.org/docsets/RestKit/)
+[![Pod Platform](http://img.shields.io/cocoapods/p/RestKit.svg?style=flat)](http://cocoadocs.org/docsets/RestKit/)
+[![Pod License](http://img.shields.io/cocoapods/l/RestKit.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Visit our IRC channel](http://img.shields.io/badge/IRC-%23RestKit-green.svg?style=flat)](https://kiwiirc.com/client/irc.freenode.net/?nick=rkuser|?&theme=basic#RestKit)
 
 RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and Mac OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical. For example, here's how to access the Twitter public timeline and turn the JSON contents into an array of Tweet objects:
 
@@ -610,10 +614,6 @@ Please note that if your installation fails, it may be because you are installin
 ### From a Release Package or as a Git submodule
 
 Detailed installation instructions are available in the [Visual Install Guide](https://github.com/RestKit/RestKit/wiki/Installing-RestKit-v0.20.x-as-a-Git-Submodule) on the Wiki.
-
-## Using RestKit in a Swift Project
-
-Install RestKit using one of the above methods. Then add `@import RestKit;` (if RestKit is built as a dynamic framework) or `#import <RestKit/RestKit.h>` (if RestKit is built as a static library) into the bridging header for your Swift project. To enable the Core Data functionality in RestKit, add `@import CoreData;` into your bridging header _before_ you import RestKit.
 
 ## License
 

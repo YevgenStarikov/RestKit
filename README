@@ -1,0 +1,13 @@
+
+git remote add upstream https://github.com/RestKit/RestKit.git
+
+--------------------
+
+setting up from tvOS 
+git remote add -f upstream https://github.com/taradayka/RestKit-tvOS-.git
+
+
+git fetch upstream
+
+
+git merge upstream/master
