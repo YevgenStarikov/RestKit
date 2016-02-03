@@ -39,7 +39,7 @@ EOS
     os.source_files   = 'Code/ObjectMapping.h', 'Code/ObjectMapping'
     os.dependency       'RestKitTV/Support'
     os.dependency       'RestKitTV/RKValueTransformers'
-    os.dependency       'ISO8601DateFormatterValueTransformer', '~> 0.6.0'
+    os.dependency       'RestKitTV/ISO8601DateFormatterValueTransformer'
   end
 
   s.subspec 'Network' do |ns|
@@ -114,7 +114,12 @@ EOS
   s.subspec 'RKValueTransformers' do |tk|
     tk.source_files   = 'Code/RestKit.h', 'RestKitTV/Code/RKValueTransformers.h', 'RestKitTV/Code/RKValueTransformers'
     #ss.dependency 'RestKitTV/TransitionKit'
-  end
+  end 
+  
+  s.subspec 'ISO8601DateFormatterValueTransformer' do |tk|
+    tk.source_files   = 'Code/RestKit.h', 'RestKitTV/Code/ISO8601DateFormatterValueTransformer.h', 'RestKitTV/Code/ISO8601DateFormatterValueTransformer'
+
+  end 
 
   s.subspec 'CocoaLumberjack' do |cl|
     cl.source_files = 'Code/CocoaLumberjack/RKLumberjackLogger.*'
