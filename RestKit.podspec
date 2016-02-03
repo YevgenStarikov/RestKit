@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             =  'RestKit'
-  s.version          =  '0.24.1'
+  s.version          =  '0.26.0'
   s.summary          =  'RestKit is a framework for consuming and modeling RESTful web resources on iOS and OS X.'
-  s.homepage         =  'http://www.restkit.org'
+  s.homepage         =  'https://github.com/RestKit/RestKit'
   s.social_media_url =  'https://twitter.com/RestKit'
   s.author           =  { 'Blake Watters' => 'blakewatters@gmail.com' }
   s.source           =  { :git => 'https://github.com/razmara/RestKit.git', :tag => "v#{s.version}" }
@@ -38,7 +38,7 @@ EOS
     os.source_files   = 'Code/ObjectMapping.h', 'Code/ObjectMapping'
     os.dependency       'RestKit/Support'
     os.dependency       'RKValueTransformers', '~> 1.1.0'
-    os.dependency       'ISO8601DateFormatterValueTransformer', '~> 0.6.0'
+    os.dependency       'ISO8601DateFormatterValueTransformer', '~> 0.6.1'
   end
 
   s.subspec 'Network' do |ns|
@@ -99,7 +99,14 @@ EOS
   end
 
   s.subspec 'Support' do |ss|
-    ss.source_files   = 'Code/RestKit.h', 'Code/Support.h', 'Code/Support', 'Vendor/LibComponentLogging/Core'
-    ss.dependency 'TransitionKit', '~> 2.1.0'
+    ss.source_files   = 'Code/RestKit.h', 'Code/Support.h', 'Code/Support'
+    ss.preserve_paths = 'Vendor/LibComponentLogging/Core' # Preserved because they are symlinked
+    ss.dependency 'TransitionKit', '~> 2.2'
+  end
+
+  s.subspec 'CocoaLumberjack' do |cl|
+    cl.source_files = 'Code/CocoaLumberjack/RKLumberjackLogger.*'
+    cl.dependency 'CocoaLumberjack'
+    cl.dependency 'RestKit/Support'
   end
 end
