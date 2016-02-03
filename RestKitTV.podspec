@@ -48,7 +48,7 @@ EOS
     ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
     ns.tvos.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
     ns.dependency       'SOCKit'
-    ns.dependency       'AFNetworking', '~> 3.0'
+    ns.dependency       'RestKitTV/AFNetworking'
     ns.dependency       'RestKitTV/ObjectMapping'
     ns.dependency       'RestKitTV/Support'
 
@@ -117,9 +117,12 @@ EOS
   end 
   
   s.subspec 'ISO8601DateFormatterValueTransformer' do |tk|
-    tk.source_files   = 'Code/RestKit.h', 'RestKitTV/Code/ISO8601DateFormatterValueTransformer.h', 'RestKitTV/Code/ISO8601DateFormatterValueTransformer'
-
+    tk.source_files   = 'Code/RestKit.h', 'RestKitTV/ISO8601DateFormatterValueTransformer/Code/ISO8601DateFormatterValueTransformer.h', 'RestKitTV/ISO8601DateFormatterValueTransformer/Code'
   end 
+
+  s.subspec 'AFNetworking' do |tk|
+    tk.source_files   = 'Code/RestKit.h', 'RestKitTV/AFNetworking/AFNetworking.h', 'RestKitTV/AFNetworking/AFNetworking'
+  end
 
   s.subspec 'CocoaLumberjack' do |cl|
     cl.source_files = 'Code/CocoaLumberjack/RKLumberjackLogger.*'
