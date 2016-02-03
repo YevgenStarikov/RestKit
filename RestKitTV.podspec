@@ -36,7 +36,7 @@ EOS
   end
 
   s.subspec 'ObjectMapping' do |os|
-    os.source_files   = 'Code/ObjectMapping.h', 'Code/ObjectMapping'
+    os.source_files   = 'Code/ObjectMapping.h', 'Code/ObjectMapping', 'Code/ObjectMapping'
     os.dependency       'RestKit/Support'
     os.dependency       'RKValueTransformers', '~> 1.1.0'
     os.dependency       'ISO8601DateFormatterValueTransformer', '~> 0.6.1'
