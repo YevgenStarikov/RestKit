@@ -48,7 +48,7 @@ EOS
     ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
     ns.tvos.frameworks = 'CoreServices', 'Security', 'SystemConfiguration'
     ns.dependency       'SOCKit'
-    ns.dependency       'AFNetworking'#, '~> 1.3.0'
+    ns.dependency       'AFNetworking', '~> 3.0'
     ns.dependency       'RestKitTV/ObjectMapping'
     ns.dependency       'RestKitTV/Support'
 
