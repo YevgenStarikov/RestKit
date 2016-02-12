@@ -54,8 +54,9 @@ static NSPredicate *RKPredicateWithSubsitutionVariablesForAttributeValues(NSDict
                                  : [NSString stringWithFormat:@"%@ = $%@", attributeName, attributeName];
         [formatFragments addObject:formatFragment];
     }];
-
-    return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" AND "]];
+    //Majid: changed to OR to support the UUID and SSID combination for cases where ssid may be -1 on the local db
+    //return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" AND "]];
+    return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" OR "]];
 }
 
 @interface RKFetchRequestManagedObjectCache ()
