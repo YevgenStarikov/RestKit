@@ -50,12 +50,15 @@ static NSPredicate *RKPredicateWithSubsitutionVariablesForAttributeValues(NSDict
     NSMutableArray *formatFragments = [NSMutableArray arrayWithCapacity:[attributeNames count]];
     [attributeValues enumerateKeysAndObjectsUsingBlock:^(NSString *attributeName, id value, BOOL *stop) {
         NSString *formatFragment = RKObjectIsCollection(value)
-                                 ? [NSString stringWithFormat:@"%@ IN $%@", attributeName, attributeName]
-                                 : [NSString stringWithFormat:@"%@ = $%@", attributeName, attributeName];
+                    ? [NSString stringWithFormat:@"%@ IN $%@", attributeName, attributeName]
+                    : [NSString stringWithFormat:@"(%@ != nil && %@ != \"\" && %@ = $%@)", attributeName, attributeName, attributeName, attributeName];
         [formatFragments addObject:formatFragment];
     }];
 
-    return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" AND "]];
+    //Majid: changed to OR to support the UUID and SSID combination for cases where ssid may be -1 on the local db
+//    return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" AND "]];
+    return [NSPredicate predicateWithFormat:[formatFragments componentsJoinedByString:@" OR "]];
+
 }
 
 @interface RKFetchRequestManagedObjectCache ()
