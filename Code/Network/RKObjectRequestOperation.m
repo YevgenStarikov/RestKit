@@ -478,6 +478,9 @@ static NSString *RKStringDescribingURLResponseWithData(NSURLResponse *response, 
         } else {
             if (success) {
                 dispatch_async(self.successCallbackQueue ?: dispatch_get_main_queue(), ^{
+                    NSDictionary *responseDict=[NSJSONSerialization JSONObjectWithData:self.HTTPRequestOperation.responseData options:NSJSONReadingMutableLeaves error:nil];
+                    NSNotification *notification=[NSNotification notificationWithName:@"com.molescope.csrf" object:nil userInfo:responseDict];
+                    [[NSNotificationQueue defaultQueue] enqueueNotification:notification postingStyle:NSPostWhenIdle coalesceMask:NSNotificationCoalescingOnName forModes:nil];
                     success(self, self.mappingResult);
                 });
             }
