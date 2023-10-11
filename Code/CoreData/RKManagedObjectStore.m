@@ -52,10 +52,15 @@ static BOOL RKIsManagedObjectContextDescendentOfContext(NSManagedObjectContext *
 
 static NSSet *RKSetOfManagedObjectIDsFromManagedObjectContextDidSaveNotification(NSNotification *notification)
 {
-    NSUInteger count = [[[notification.userInfo allValues] valueForKeyPath:@"@sum.@count"] unsignedIntegerValue];
-    NSMutableSet *objectIDs = [NSMutableSet setWithCapacity:count];
+    // fixing the following NEW error: "this class is not key value coding-compliant for the key @count" for iOS 10+
+    // NSUInteger count = [[[notification.userInfo allValues] valueForKeyPath:@"@sum.@count"] unsignedIntegerValue];
+    // NSMutableSet *objectIDs = [NSMutableSet setWithCapacity:count];
+
+    NSLog([notification.userInfo allValues]);
+    NSMutableSet *objectIDs =[NSMutableSet new];
     for (NSSet *objects in [notification.userInfo allValues]) {
-        [objectIDs unionSet:[objects valueForKey:@"objectID"]];
+        if ([objects isKindOfClass:NSSet.class])
+            [objectIDs unionSet:[objects valueForKey:@"objectID"]];
     }
     return objectIDs;
 }
