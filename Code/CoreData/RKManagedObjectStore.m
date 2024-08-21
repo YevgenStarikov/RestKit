@@ -56,7 +56,7 @@ static NSSet *RKSetOfManagedObjectIDsFromManagedObjectContextDidSaveNotification
     // NSUInteger count = [[[notification.userInfo allValues] valueForKeyPath:@"@sum.@count"] unsignedIntegerValue];
     // NSMutableSet *objectIDs = [NSMutableSet setWithCapacity:count];
     
-    NSLog([notification.userInfo allValues]);
+    NSLog(@"%@", [notification.userInfo allValues]);
     NSMutableSet *objectIDs =[NSMutableSet new];
     for (NSSet *objects in [notification.userInfo allValues]) {
         if ([objects isKindOfClass:NSSet.class])
