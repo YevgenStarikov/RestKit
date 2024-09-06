@@ -328,6 +328,7 @@
     RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"Human" inManagedObjectStore:managedObjectStore];
     entityMapping.identificationAttributes = RKIdentificationAttributesInferredFromEntity(entityMapping.entity);
     entityMapping.identificationPredicate = [NSPredicate predicateWithValue:YES];
+    entityMapping.identificationPredicateBlock = ^(NSDictionary *representation, NSManagedObjectContext *context) { return [NSPredicate predicateWithValue:YES]; };
     entityMapping.deletionPredicate = [NSPredicate predicateWithValue:NO];
     [entityMapping setModificationAttributeForName:@"railsID"];
     [entityMapping addConnectionForRelationship:@"cats" connectedBy:@{ @"railsID": @"railsID", @"name": @"name" }];
@@ -337,6 +338,7 @@
     expect(entityMappingCopy.entity).to.equal(entityMapping.entity);
     expect(entityMappingCopy.identificationAttributes).to.equal(entityMapping.identificationAttributes);
     expect(entityMappingCopy.identificationPredicate).to.equal(entityMapping.identificationPredicate);
+    expect(entityMappingCopy.identificationPredicateBlock).to.equal(entityMapping.identificationPredicateBlock);
     expect(entityMappingCopy.deletionPredicate).to.equal(entityMapping.deletionPredicate);
     expect(entityMappingCopy.modificationAttribute).to.equal(entityMapping.modificationAttribute);
     expect(entityMappingCopy.connections.count == entityMapping.connections.count);
@@ -614,6 +616,22 @@
     NSArray *identificationAttributes = RKIdentificationAttributesInferredFromEntity(entity);
     expect(identificationAttributes).notTo.beNil();
     NSArray *attributeNames = @[ @"name" ];
+    expect([identificationAttributes valueForKey:@"name"]).to.equal(attributeNames);
+}
+
+- (void)testEntityIdentifierInferenceFromUserInfoKeyForCommaSeparatedString
+{
+    NSEntityDescription *entity = [[NSEntityDescription alloc] init];
+    [entity setName:@"Monkey"];
+    NSAttributeDescription *identifierAttribute = [NSAttributeDescription new];
+    [identifierAttribute setName:@"monkeyID"];
+    NSAttributeDescription *nameAttribute = [NSAttributeDescription new];
+    [nameAttribute setName:@"name"];
+    [entity setProperties:@[ identifierAttribute, nameAttribute ]];
+    [entity setUserInfo:@{ RKEntityIdentificationAttributesUserInfoKey: @"name,monkeyID" }];
+    NSArray *identificationAttributes = RKIdentificationAttributesInferredFromEntity(entity);
+    expect(identificationAttributes).notTo.beNil();
+    NSArray *attributeNames = @[ @"name", @"monkeyID" ];
     expect([identificationAttributes valueForKey:@"name"]).to.equal(attributeNames);
 }
 
