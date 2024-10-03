@@ -128,10 +128,8 @@ static void *RKOperationFinishDate = &RKOperationFinishDate;
 
 - (void)objectRequestOperationDidStart:(NSNotification *)notification
 {
-    // Weakly tag the HTTP operation with its parent object request operation
     RKObjectRequestOperation *objectRequestOperation = [notification object];
     objc_setAssociatedObject(objectRequestOperation, RKOperationStartDate, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(objectRequestOperation.HTTPRequestOperation, RKParentObjectRequestOperation, objectRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     NSURLRequest *request = objectRequestOperation.HTTPRequestOperation.request;
     RKLogInfo(@"%@ '%@'", request.HTTPMethod, request.URL.absoluteString);
